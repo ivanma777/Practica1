@@ -7,12 +7,14 @@
 #endif // !CLASES_H
 
 
+
 #define print std::cout
 
 
 class Animal
 {
 
+	virtual checkPos() = 0;
 
 
 
