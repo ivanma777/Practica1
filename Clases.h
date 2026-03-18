@@ -1,11 +1,8 @@
-// Practica1_Programacion2_SantiGonzalez_IvanMartinezRuiz.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
+#pragma once
 #include <iostream>
 #ifndef CLASES_H
 #define CLASES_H
 #endif // !CLASES_H
-
 
 
 #define print std::cout
@@ -14,7 +11,6 @@
 class Animal
 {
 
-	virtual checkPos() = 0;
 
 
 
