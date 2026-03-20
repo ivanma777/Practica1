@@ -4,17 +4,17 @@
 #include <cstdlib>
 #include <ctime>
 
-Ecosistema::Ecosistema(int tamaño) {
-    this->tamaño = tamaño;
-    rio = new Animal * [tamaño];
+Ecosistema::Ecosistema(int tamano) {
+    this->tamano = tamano;
+    rio = new Animal * [tamano];
 
-    for (int i = 0; i < tamaño; i++) {
-        rio[i] = nullptr; // vacío
+    for (int i = 0; i < tamano; i++) {
+        rio[i] = nullptr; // void
     }
 }
 
 Ecosistema::~Ecosistema() {
-    for (int i = 0; i < tamaño; i++) {
+    for (int i = 0; i < tamano; i++) {
         delete rio[i];
     }
     delete[] rio;
@@ -27,7 +27,7 @@ void Ecosistema::inicializar() {
 
     // 5 peces
     while (colocados < 5) {
-        int pos = rand() % tamaño;
+        int pos = rand() % tamano;
         if (rio[pos] == nullptr) {
             rio[pos] = new Pez();
             colocados++;
@@ -38,7 +38,7 @@ void Ecosistema::inicializar() {
 
     // 5 osos
     while (colocados < 5) {
-        int pos = rand() % tamaño;
+        int pos = rand() % tamano;
         if (rio[pos] == nullptr) {
             rio[pos] = new Oso();
             colocados++;
@@ -47,7 +47,7 @@ void Ecosistema::inicializar() {
 }
 
 void Ecosistema::mostrar() {
-    for (int i = 0; i < tamaño; i++) {
+    for (int i = 0; i < tamano; i++) {
         if (rio[i] == nullptr)
             std::cout << "[ ] ";
         else if (rio[i]->getTipo() == "Pez")

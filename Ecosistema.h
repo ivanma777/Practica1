@@ -9,10 +9,10 @@
 class Ecosistema {
 private:
     Animal** rio;
-    int tamaño;
+    int tamano;
 
 public:
-    Ecosistema(int tamaño);
+    Ecosistema(int tamano);
     ~Ecosistema();
 
     void inicializar();
