@@ -1,5 +1,11 @@
+#include "Ecosistema.h"
 #include <iostream>
 
-#include "clases.h"
-#include "FUNCIONES.h"
+int main() {
+    Ecosistema eco(15);
 
+    eco.inicializar();
+    eco.mostrar();
+
+    return 0;
+}

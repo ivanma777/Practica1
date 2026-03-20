@@ -10,37 +10,36 @@
 
 class Animal
 {
-
-
-
-
+public:
+	virtual std::string getTipo() = 0;
+	virtual ~Animal() {}
 };
+
+
+
+
 //carlos
 
 class Pez : public Animal
 {
-
+public:
+	std::string getTipo() override {
+		return "Pez";
+	}
 
 };
 
 class Oso : public Animal
 {
-
-
-};
-
-
-class rio
-{
 public:
-	/*void rio(Pez* pez, Oso* oso)
-	{
-		print << "El pez se ha alimentado\n";
-	}*/
-
-
+	std::string getTipo() override {
+		return "Oso";
+	}
 
 };
+
+
+
 
 
 
