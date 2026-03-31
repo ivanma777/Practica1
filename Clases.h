@@ -14,7 +14,7 @@ class Animal
 public:
 	virtual std::string getTipo() = 0;
 	virtual ~Animal() {}
-	virtual std::string getSexo() = 0;
+	virtual bool getSexo() { return false; }
 	virtual int getFuerza() { return 0; }
 };
 
@@ -31,8 +31,8 @@ public:
 	}
 
     //genera sexo aleatorio
-	std::string getSexo() override {
-		return (rand() % 2 == 0) ? "Macho" : "Hembra";
+	bool getSexo() override {
+		return (rand() % 2 == 0) ? true : false;
 	}
 
 	int getFuerza() override {
@@ -47,8 +47,8 @@ public:
 	std::string getTipo() override {
 		return "Oso";
 	}
-	std::string getSexo() override {
-		return (rand() % 2 == 0) ? "Macho" : "Hembra";
+	bool getSexo() override {
+		return (rand() % 2 == 0) ? true : false;
 	}
 
 	int getFuerza() override {
