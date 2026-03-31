@@ -11,7 +11,7 @@ private:
     Animal** rio;
     int tamano;
  
-    int celdaVaciaAleatoria(Animal**) const; // Para crear aniamles en celdas vacias
+    int celdaVaciaAleatoria() const; // Para crear aniamles en celdas vacias
  
 public:
     Ecosistema(int tamano);
