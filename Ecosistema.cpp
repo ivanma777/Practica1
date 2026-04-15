@@ -63,21 +63,17 @@ void Ecosistema::mostrar() {
 //  algo que veas que esta mal o que piensas que puede ir mejor me dices guapo
  
 // Devuelve el num de una celda vacia al azar
-
-//I: La celda vacia aleatoria antes mirama el estado de rio pero no tenia en cuenta si ocurria un paso o no
-// lo he cambiado para que mira nuevorio asi tiene en cuenta se ocurrio un paso previo
-//lo he hecho por si acaso puede llegar a dar problemas
-int Ecosistema::celdaVaciaAleatoria(Animal** estado) const {
+int Ecosistema::celdaVaciaAleatoria() const {
     int vacias = 0;
     for (int i = 0; i < tamano; i++)
-        if (estado[i] == 0) vacias++;
+        if (rio[i] == 0) vacias++;
  
     if (vacias == 0) return -1;
  
     int objetivo = rand() % vacias;
     int contador = 0;
     for (int i = 0; i < tamano; i++) {
-        if (estado[i] == 0) {
+        if (rio[i] == 0) {
             if (contador == objetivo) return i;
             contador++;
         }
@@ -122,50 +118,22 @@ void Ecosistema::paso() {
             // Chocan dos animales 
             Animal* residente = nuevoRio[destino];
  
-            if (residente->getTipo() == animal->getTipo() ) {
-                //mismo sexo , se quedan donde estan y aparece nuevo individuo
-                if (residente->getSexo() != animal->getSexo()) {
-                
-                    // Mismo tipo, ambos se quedan donde estaban
-                    if (nuevoRio[i] == nullptr)
-                        nuevoRio[i] = animal;
-                    else
-                        delete animal; 
-
+            if (residente->getTipo() == animal->getTipo()) {
+                // Mismo tipo, ambos se quedan donde estaban
+                if (nuevoRio[i] == nullptr)
+                    nuevoRio[i] = animal;
+                else
+                    delete animal; 
  
-                    // Nace un nuevo animal en celda vacía aleatoria
-                    int libre = celdaVaciaAleatoria(nuevoRio);
-                    if (libre != -1) {
-                        if (residente->getTipo() == "Pez")
-                            nuevoRio[libre] = new Pez();
-                        else
-                            nuevoRio[libre] = new Oso();
-                    }
-                }//añado caso de la fuerza
-                else {
-                    if (animal ->getFuerza() > residente->getFuerza()) {
-                        // El animal más fuerte se queda, el otro muere
-                        delete residente;
-                        nuevoRio[destino] = animal;
-                    } 
-                    else 
-                    {
-                        if (animal->getFuerza() == residente->getFuerza())
-                        {
-                            nuevoRio[i] = animal;
-
-                        }
-                        else {
-
-                            delete animal; // el animal que intenta entrar muere
-                        }
-					}
+                // Nace un nuevo animal en celda vacía aleatoria
+                int libre = celdaVaciaAleatoria();
+                if (libre != -1) {
+                    if (residente->getTipo() == "Pez")
+                        nuevoRio[libre] = new Pez();
+                    else
+                        nuevoRio[libre] = new Oso();
                 }
-
-            } 
-           
-            
-            else {
+            } else {
                 // Oso contra Pez 
                 if (animal->getTipo() == "Oso") {
                     delete residente;           // el pez  muere
