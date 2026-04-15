@@ -50,7 +50,6 @@ public:
 	bool getSexo() override {
 		return (rand() % 2 == 0) ? true : false;
 	}
-
 	int getFuerza() override {
 		return rand() % 10;
 	}
